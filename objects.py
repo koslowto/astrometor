@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
 
-# Ellipse erstellen
 def generate_ellipse(a, e, resolution=360):
     epsilon = e/a
     t = np.arange(0, resolution + 1) 
@@ -16,7 +15,6 @@ def generate_ellipse(a, e, resolution=360):
     ])
     return ellipse
 
-# Ellipse vom Mittelpunkt aus erstellen
 def generate_ellipse_centered(a, e, resolution=360):
     t = np.arange(0, resolution + 1) 
     ellipse = np.array([
@@ -27,7 +25,6 @@ def generate_ellipse_centered(a, e, resolution=360):
     return ellipse
 
 
-# Kugel erstellen (Funktion von ChatGPT)
 def generate_sphere(resolution, r=1, pos_x=0, pos_y=0, pos_z=0):
     theta = np.linspace(0, 2 * np.pi, 2 * resolution)
     phi = np.linspace(0, np.pi, resolution)
@@ -40,39 +37,30 @@ def generate_sphere(resolution, r=1, pos_x=0, pos_y=0, pos_z=0):
     return x, y , z
 
 
-# Funktion zum Zeichnen von Sonne und Planet
 def draw_planet_and_sun(ax, bahn, v=45):
-    # Sonne zeichnen
     sun_x, sun_y, sun_z = generate_sphere(resolution=6, r=0.075)
     ax.plot_surface(sun_x, sun_y, sun_z, color='yellow')
 
-    # Planet zeichnen
-    planet_x, planet_y, planet_z = generate_sphere(resolution=5,r=0.05, pos_x=bahn[0][v],
-        pos_y=bahn[1][v], pos_z=bahn[2][v])
+    planet_x, planet_y, planet_z = generate_sphere(resolution=5,r=0.05, pos_x=bahn[0][v], pos_y=bahn[1][v], pos_z=bahn[2][v])
     ax.plot_surface(planet_x, planet_y, planet_z, color='blue')
 
 
-# Ebene Zeichnen (Funktion mit Hilfe von ChatGPT erstellt)
 def draw_plane(ax, size_x, size_y, rot_x=0, rot_y=0, rot_z=0, colour='black'): 
-    # Erstellen einer Bezugsebene
-    x, y = np.meshgrid(np.arange(-size_x, size_x+0.1, 0.1), np.arange(-size_y, size_y+0.1, 0.1))
-    z = 0 * x + 0 * y
+    x, y = np.meshgrid(np.arange(-size_x, size_x+0.1, 0.1), np.arange(-size_y, size_y+0.1, 0.1)); z = 0 * x + 0 * y
 
-    # Drehung der Bezugsebene
     x_rot, y_rot, z_rot = rot.rotate_plane(x, y, z, rot_x, rot_y, rot_z)
 
-    # Zeichnen der Ebene
     ax.plot_surface(x_rot, y_rot, z_rot, color=colour, alpha=0.125)
 
 
-# Pfeil zum Frühlings- oder Herbstpunkt zeichnen
-def draw_arrow_frueh(ax, v):
+def draw_arrow_node(ax, v):
+    # Ascending node
     if 88 <= v <= 92: 
         draw_3d_arrow(ax, start=(0, 0, 0), direction=(2, 0, 0), length=2, color='red')
+    # Descending noe
     elif 268 <= v <= 272:
         draw_3d_arrow(ax, start=(0, 0, 0), direction=(-2, 0, 0), length=2, color='red')
 
-# Pfeil zeichnen (Funktion von ChatGPT)
 def draw_3d_arrow(ax, start, direction, length=1.0, shaft_ratio=0.8, cone_radius=0.05, cone_height=0.2, color='blue'):
     start = np.array(start)
     direction = np.array(direction)

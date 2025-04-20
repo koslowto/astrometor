@@ -1,9 +1,8 @@
 import math as m
 import numpy as np
 
-# 3d Drehfunktion
 def rotate_3d(figure, ang_x=0, ang_y=0, ang_z=0):
-    # Definition der Drehmatrizen
+    # Rotation matrices
     ROT_MAT_X = np.array([
         [1, 0, 0],
         [0, m.cos(m.radians(int(ang_x))), -m.sin(m.radians(int(ang_x)))], 
@@ -20,18 +19,15 @@ def rotate_3d(figure, ang_x=0, ang_y=0, ang_z=0):
         [0, 0, 1]
     ])
     
-    # Drehung um die drei Achsen
     figure = np.matmul(ROT_MAT_X, figure)
     figure = np.matmul(ROT_MAT_Y, figure)
     figure = np.matmul(ROT_MAT_Z, figure)
     return figure
 
 
-# Funktion zur Drehung einer Ebene
 def rotate_plane(x, y, z, ang_x, ang_y, ang_z):
-    # Umwandlung der Ebene in Geeignetes Format
+    # Make the plane rotatable
     plane = np.vstack((x.flatten(), y.flatten(), z.flatten()))    
 
-    # Drehung der Ebene
     rotated_plane = rotate_3d(plane, ang_x, ang_y, ang_z)
     return rotated_plane[0].reshape(x.shape), rotated_plane[1].reshape(y.shape), rotated_plane[2].reshape(z.shape)
