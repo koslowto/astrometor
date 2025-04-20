@@ -9,14 +9,13 @@ from matplotlib.widgets import Slider
 from matplotlib.widgets import RadioButtons
 
 import graph
-import bahnelemente as bahn
-import fruehlingspunkt as frueh
+import orbital_nodes as nodes
+import orbital_elements as elem
 
 
 # Initialize the program
-fig = plt.figure(num='Bahnelemente')
+fig = plt.figure(num='AstroMetor')
 plt.get_current_fig_manager().toolbar.hide()
-
 # Configuring the graph
 ax = plt.axes(projection='3d')
 ax.view_init(elev = 25, azim = -80)
@@ -47,15 +46,15 @@ slider_v = Slider(ax_slider_v, "ν", valmin = 0, valmax = 360, valinit = 0, vals
 slider_v.set_active(False); ax_slider_v.set_visible(False)
 
 # Callback-Functions
-slider_e.on_changed(lambda val: bahn.preview_graph(ax=ax, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val))
-slider_i.on_changed(lambda val: bahn.preview_graph(ax=ax, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val))
-slider_w.on_changed(lambda val: bahn.preview_graph(ax=ax, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val))
-slider_o.on_changed(lambda val: bahn.preview_graph(ax=ax, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val))
-slider_v.on_changed(lambda val: frueh.preview_graph(ax=ax, v=slider_v.val))
+slider_e.on_changed(lambda val: elem.preview_graph(ax=ax, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val))
+slider_i.on_changed(lambda val: elem.preview_graph(ax=ax, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val))
+slider_w.on_changed(lambda val: elem.preview_graph(ax=ax, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val))
+slider_o.on_changed(lambda val: elem.preview_graph(ax=ax, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val))
+slider_v.on_changed(lambda val: nodes.preview_graph(ax=ax, v=slider_v.val))
 
 # Button to change the program's mode
 ax_radio = plt.axes([-0.025, 0.175, 0.25, 0.1])
-check = RadioButtons(ax=ax_radio, labels=["Bahnelemente", "Frühlingspunkt"], activecolor='grey')
+check = RadioButtons(ax=ax_radio, labels=["Orbital Elements", "Orbital Nodes"], activecolor='grey')
 # Callback-Function
 check.on_clicked(lambda val: graph.change_mode(ax=ax, mode=check.value_selected, 
     slider_e=slider_e, slider_w=slider_w, slider_i=slider_i, slider_o=slider_o, slider_v=slider_v, 
