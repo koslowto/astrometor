@@ -52,12 +52,12 @@ def render_graph(ax, e, w, i , o):
 
 
 last_angle_sum = 0
-def preview_graph(ax, e, w, i , o):
+def preview_graph(ax, e, w, i , o, prev_int):
     global last_angle_sum
     resolution = 16
 
     # Only render the graph if any angle has changed by at least 10°
-    if abs(e * 200 + w + i + o - last_angle_sum) < 10:
+    if abs(e * 200 + w + i + o - last_angle_sum) < prev_int:
         return
     last_angle_sum = e * 200 + w + i + o
     graph.reset_graph(ax=ax)
