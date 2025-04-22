@@ -1,0 +1,14 @@
+{
+  "labels": {
+    "Orbital Elements": "Orbital Elements",
+    "Orbital Nodes": "Orbital Nodes"
+  },
+  "preview_interval": 10,
+  "sliders": {
+    "e": 0.5,
+    "i": 40,
+    "o": 10,
+    "w": 270,
+    "v": 0
+  }
+}

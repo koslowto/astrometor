@@ -57,7 +57,7 @@ def preview_graph(ax, v, prev_int):
     global last_angle
 
     # Only draw the graph if the angle has changed by at least 10°, or if the planet is in a node, or it has moved away from a node
-    if not (88 <= v <= 92 or 268 <= v <= 272):
+    if not (88 <= v <= 92 or 268 <= v <= 272) and v % 90 != 0:
         if abs(v - last_angle) < prev_int and not (88 <= last_angle <= 92 or 268 <= last_angle <= 272):
             return
     last_angle = v

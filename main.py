@@ -14,10 +14,7 @@ import orbital_nodes as nodes
 import orbital_elements as elem
 
 
-#with open(config_path, 'r') as conf_file:
-#    config = json.load(conf_file)
-    #print(conf_file.readline())
-#    print(config)
+# Parse the configuration file
 config = conf.parse_config()
 prev_int = config["preview_interval"]
 
@@ -54,14 +51,18 @@ slider_v = Slider(ax_slider_v, "ν", valmin = 0, valmax = 360, valinit = config[
 slider_v.set_active(False); ax_slider_v.set_visible(False)
 
 # Callback-Functions
-slider_e.on_changed(lambda val: elem.preview_graph(ax=ax, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val, prev_int=prev_int))
-slider_i.on_changed(lambda val: elem.preview_graph(ax=ax, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val, prev_int=prev_int))
-slider_w.on_changed(lambda val: elem.preview_graph(ax=ax, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val, prev_int=prev_int))
-slider_o.on_changed(lambda val: elem.preview_graph(ax=ax, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val, prev_int=prev_int))
-slider_v.on_changed(lambda val: nodes.preview_graph(ax=ax, v=slider_v.val, prev_int=prev_int))
+slider_e.on_changed(lambda val: elem.preview_graph(updated_val=val, ax=ax, prev_int=prev_int,
+                                                   e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val))
+slider_i.on_changed(lambda val: elem.preview_graph(updated_val=val, ax=ax, prev_int=prev_int,
+                                                   e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val))
+slider_w.on_changed(lambda val: elem.preview_graph(updated_val=val, ax=ax, prev_int=prev_int,
+                                                   e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val))
+slider_o.on_changed(lambda val: elem.preview_graph(updated_val=val, ax=ax, prev_int=prev_int,
+                                                   e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val))
+slider_v.on_changed(lambda val: nodes.preview_graph(ax=ax, prev_int=prev_int, v=slider_v.val))
 
 # Button to change the program's mode
-ax_radio = plt.axes([-0.025, 0.175, 0.25, 0.1])
+ax_radio = plt.axes([-0.025, 0.175, 0.3, 0.1])
 check = RadioButtons(ax=ax_radio, labels=list(config["labels"].keys()), activecolor='grey')
 # Callback-Function
 check.on_clicked(lambda val: graph.change_mode(ax=ax, mode=config["labels"][check.value_selected], 
@@ -75,8 +76,7 @@ fig.canvas.mpl_connect('button_release_event', lambda event:
                        e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val, v=slider_v.val, ax=ax))
 
 
-# Render the graph on program startup
-#graph.update_graph(ax, mode=check.value_selected, e=slider_e.val, w=slider_w.val, i=slider_i.val, o=slider_o.val, v=slider_v.val)
+# Render the graph in the correct mode on program startup
 graph.change_mode(ax=ax, mode=config["labels"][check.value_selected], 
     slider_e=slider_e, slider_w=slider_w, slider_i=slider_i, slider_o=slider_o, slider_v=slider_v, 
     ax_slider_e=ax_slider_e, ax_slider_w=ax_slider_w, ax_slider_i=ax_slider_i, ax_slider_o=ax_slider_o, ax_slider_v=ax_slider_v)

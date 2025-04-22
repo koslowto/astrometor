@@ -20,8 +20,10 @@ def update_graph(ax, mode, e, w, i , o, v):
     reset_graph(ax=ax)
 
     if mode == 'Orbital Elements':
+        elem.last_angle_sum = 200 * e + w + i + o
         elem.render_graph(ax=ax, e=e, w=w, i=i, o=o); v = 45
     elif mode == 'Orbital Nodes':
+        nodes.last_angle = v
         nodes.render_graph(ax=ax, v=v)
 
     ax.figure.canvas.draw_idle()
