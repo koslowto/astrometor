@@ -5,8 +5,8 @@ import os.path
 
 default_config = {
     "labels": {
-        "Orbital Elements": "Orbital Elements",
-        "Orbital Nodes": "Orbital Nodes"
+        "Bahnelemente": "Bahnelemente",
+        "Frühlingspunkt": "Fruehlingspunkt"
     },
     "preview_interval": 10,
     "sliders": {
@@ -58,7 +58,7 @@ def validate_config(config):
     if len(config["labels"]) != 2:
         return False
     for key in config["labels"]:
-        if not (config["labels"][key] in ["Orbital Elements", "Orbital Nodes"]):
+        if not (config["labels"][key] in ["Bahnelemente", "Fruehlingspunkt"]):
             return False
 
     if not isinstance(config["preview_interval"], (int, float)):

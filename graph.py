@@ -19,10 +19,10 @@ def reset_graph(ax):
 def update_graph(ax, mode, e, w, i , o, v):
     reset_graph(ax=ax)
 
-    if mode == 'Orbital Elements':
+    if mode == "Bahnelemente":
         elem.last_angle_sum = 200 * e + w + i + o
         elem.render_graph(ax=ax, e=e, w=w, i=i, o=o); v = 45
-    elif mode == 'Orbital Nodes':
+    elif mode == "Fruehlingspunkt":
         nodes.last_angle = v
         nodes.render_graph(ax=ax, v=v)
 
@@ -31,7 +31,7 @@ def update_graph(ax, mode, e, w, i , o, v):
 
 def change_mode(mode, ax, slider_e, slider_i, slider_o, slider_w, slider_v,
                 ax_slider_e, ax_slider_i, ax_slider_o, ax_slider_w, ax_slider_v):
-    if mode == 'Orbital Elements':
+    if mode == "Bahnelemente":
         ax.view_init(elev = 25, azim=-80, roll=0)
         slider_e.set_active(True)
         slider_i.set_active(True)
@@ -43,7 +43,7 @@ def change_mode(mode, ax, slider_e, slider_i, slider_o, slider_w, slider_v,
         ax_slider_o.set_visible(True)
         ax_slider_w.set_visible(True)
         ax_slider_v.set_visible(False)
-    elif mode == 'Orbital Nodes':
+    elif mode == "Fruehlingspunkt":
         ax.view_init(elev = 25, azim=-5, roll=-30)
         slider_e.set_active(False)
         slider_i.set_active(False)
