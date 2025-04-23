@@ -1,6 +1,6 @@
 # AstroMetor
 
-## DEUTSCH (English version available below)
+## DEUTSCH ([English version available below](#english))
 
 AstroMetor ist eine kleine Python-App zur Visualisierung der Bahnelemente und des aufsteigenden/absteigenden Knotens (Frühlingspunkt). Sie wurde mithilfe von matplotlib als Schulprojekt erstellt. Es gibt einen deutschen Zweig, der Hauptzweig ist aber auf Englisch.
 ### Installieren
@@ -47,8 +47,8 @@ dpkg -i astrometor.deb
 ```
 * Die App kann jetzt über das Systemmenü gestartet werden
 ### Konfiguration
-Wenn sie das .deb-Paket benutzen, befindet sich die Konfigurationsdatei im Verzeichnis ~/.config/astrometor/config.json. Dabei handelt es sich um ein verstecktes Verzeichnis. Wenn sie es im Dateimanager nicht sehen, aktivieren sie die Option "versteckte Dateien anzeigen" (meist STRG+H).
-Das Programm wird mit json konfiguriert. Achten sie auf korrekte json-Syntax beim bearbeiten der Datei (https://jsonchecker.com/). Die Konfigurationsdatei kann bei Problemen jederzeit zurückgesetzt werden, indem man sie löscht und die App nocheinmal startet.
+Wenn Sie das .deb-Paket benutzen, befindet sich die Konfigurationsdatei im Verzeichnis ~/.config/astrometor/config.json. Dabei handelt es sich um ein verstecktes Verzeichnis. Falls es im Dateimanager nicht erscheint, aktivieren Sie die Option "versteckte Dateien anzeigen" (meist STRG+H).
+Das Programm wird mit json konfiguriert. Achten Sie auf korrekte json-Syntax beim bearbeiten der Datei (https://jsonchecker.com/). Die Konfigurationsdatei kann bei Problemen jederzeit zurückgesetzt werden, indem man sie löscht und die App nocheinmal startet.
 #### Label
 Hiermit kann definiert werden, wie die Knöpfe fürs Umschalten der Modi heißen,
 ```
@@ -81,7 +81,7 @@ Hiermit können die Werte der Slider zum Aufruf des Programms festgelegt werden.
 }
 ```
 ### Maintenance
-Die App wird nicht aktiv maintained. Aber aufgrund der wenigen Abhängigkeiten sollte sie gut funktionieren. Im Falle von Problemen treten sie bitte mit mir in Kontakt.
+Die App wird nicht aktiv maintained. Aber aufgrund der wenigen Abhängigkeiten sollte sie gut funktionieren. Im Falle von Problemen treten Sie bitte mit mir in Kontakt.
 
 ## ENGLISH
 
