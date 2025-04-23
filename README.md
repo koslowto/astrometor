@@ -1,6 +1,6 @@
 # AstroMetor
 
-## DEUTSCH (English version available below)
+## DEUTSCH
 
 AstroMetor ist eine kleine Python-App zur Visualisierung der Bahnelemente und des aufsteigenden/absteigenden Knotens (Frühlingspunkt). Sie wurde mithilfe von matplotlib als Schulprojekt erstellt. Es gibt einen deutschen Zweig, der Hauptzweig ist aber auf Englisch.
 ### Installieren

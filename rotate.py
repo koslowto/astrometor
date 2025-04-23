@@ -2,7 +2,7 @@ import math as m
 import numpy as np
 
 def rotate_3d(figure, ang_x=0, ang_y=0, ang_z=0):
-    # Rotation matrices
+    # Drehmatrizen
     ROT_MAT_X = np.array([
         [1, 0, 0],
         [0, m.cos(m.radians(int(ang_x))), -m.sin(m.radians(int(ang_x)))], 
@@ -26,7 +26,7 @@ def rotate_3d(figure, ang_x=0, ang_y=0, ang_z=0):
 
 
 def rotate_plane(x, y, z, ang_x, ang_y, ang_z):
-    # Make the plane rotatable
+    # Ebene drehbar machen
     plane = np.vstack((x.flatten(), y.flatten(), z.flatten()))    
 
     rotated_plane = rotate_3d(plane, ang_x, ang_y, ang_z)

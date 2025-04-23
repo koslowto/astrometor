@@ -54,10 +54,10 @@ def draw_plane(ax, size_x, size_y, rot_x=0, rot_y=0, rot_z=0, colour='black'):
 
 
 def draw_arrow_node(ax, v):
-    # Ascending node
+    # Aussteigender Knoten
     if 88 <= v <= 92: 
         draw_3d_arrow(ax, start=(0, 0, 0), direction=(2, 0, 0), length=2, color='red')
-    # Descending noe
+    # Absteigender Knoten
     elif 268 <= v <= 272:
         draw_3d_arrow(ax, start=(0, 0, 0), direction=(-2, 0, 0), length=2, color='red')
 

@@ -25,10 +25,10 @@ def create_config(config_path):
 
 
 def parse_config():
-    if getattr(sys, 'frozen', False): # If the programm is running as a packaged application, use the global config file
+    if getattr(sys, 'frozen', False): # Wenn das Programm als eigenständige Anwendung läuft, globale Konfigurationsdatei auslesen
         config_path = os.path.expanduser('~') + '/.config/astrometor/config.json'
-    else: # Otherwise use the local config file
-        config_path = 'config.json' # Change this value if you want a different configuration path
+    else: # Sont lokale Konfigurationsdatei verwenden
+        config_path = 'config.json' # Dieser Wert ändert den Pfad zur Konfigurationsdatei
 
     if not os.path.exists(config_path):
         create_config(config_path)
